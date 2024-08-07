@@ -10,7 +10,7 @@
             justify-content: center;
             align-items: center;
             height: 100vh;
-            background-color: #f0f0f0;
+            background-color: #f8f0f8;
             margin: 0;
             font-family: Arial, sans-serif;
         }
@@ -20,6 +20,7 @@
             height: 200px;
             position: relative;
             perspective: 1000px;
+            cursor: pointer;
         }
 
         .envelope-inner {
@@ -30,7 +31,7 @@
             transition: transform 0.8s;
         }
 
-        .envelope:hover .envelope-inner {
+        .envelope.open .envelope-inner {
             transform: rotateX(180deg);
         }
 
@@ -48,31 +49,53 @@
         }
 
         .front {
-            background: linear-gradient(135deg, #d3a8a5 0%, #f9f2f2 100%);
+            background: linear-gradient(135deg, #f78da7 0%, #fce4ec 100%);
             clip-path: polygon(0 0, 100% 0, 100% 70%, 50% 100%, 0 70%);
+            padding: 20px;
         }
 
         .back {
-            background-color: #4caf50;
+            background: #f06292;
             transform: rotateX(180deg);
             color: #ffffff;
+            display: none;
+            padding: 20px;
         }
 
-        .message {
-            font-size: 20px;
+        .envelope.open .back {
+            display: flex;
+        }
+
+        .button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            border: none;
+            background-color: #f78da7;
+            color: white;
+            font-size: 18px;
+            cursor: pointer;
+            border-radius: 5px;
         }
     </style>
 </head>
 <body>
-    <div class="envelope">
+    <div class="envelope" id="envelope">
         <div class="envelope-inner">
             <div class="envelope-face front">
                 <p>¡Ábreme!</p>
             </div>
             <div class="envelope-face back">
-                <p class="message">Feliz cumpleaños, mamá</p>
+                <p>Feliz cumpleaños, mamá</p>
             </div>
         </div>
     </div>
+    <button class="button" onclick="openEnvelope()">Abrir</button>
+
+    <script>
+        function openEnvelope() {
+            document.getElementById('envelope').classList.toggle('open');
+        }
+    </script>
 </body>
 </html>
+
