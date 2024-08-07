@@ -4,29 +4,77 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Feliz Cumpleaños Mamá</title>
-    <link rel="stylesheet" href="est.css">
+    <style>
+        body {
+            background-color: #ffe6e6;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            height: 100vh;
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+            position: relative;
+        }
+
+        .container {
+            text-align: center;
+            background: #fff;
+            padding: 50px;
+            border-radius: 15px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            position: relative;
+            z-index: 1; /* Asegura que el contenedor esté sobre la flor */
+        }
+
+        h1 {
+            color: #ff6666;
+            font-size: 3em;
+            margin-bottom: 20px;
+        }
+
+        .message {
+            color: #333;
+            font-size: 1.5em;
+        }
+
+        .flower-container {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 150px;
+            height: 150px;
+            z-index: 0; /* Asegura que la flor esté detrás del contenedor */
+        }
+    </style>
 </head>
 <body>
     <div class="container">
         <h1>Feliz Cumpleaños Mamá</h1>
-     
+        <p class="message">Te quiero mucho y te deseo un día lleno de felicidad y amor.</p>
     </div>
-    <canvas id="flowerCanvas"></canvas>
+    <div class="flower-container">
+        <canvas id="flowerCanvas"></canvas>
+    </div>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const canvas = document.getElementById('flowerCanvas');
             const ctx = canvas.getContext('2d');
-            const canvasSize = 200;
+            const canvasSize = 150;
             canvas.width = canvasSize;
             canvas.height = canvasSize;
 
             function drawFlower(ctx, x, y, size) {
+                // Dibuja los pétalos
                 ctx.fillStyle = '#FF69B4'; // Color de los pétalos
                 for (let i = 0; i < 5; i++) {
                     ctx.beginPath();
                     ctx.ellipse(x, y, size, size / 2, (Math.PI / 5) * i, 0, 2 * Math.PI);
                     ctx.fill();
                 }
+
+                // Dibuja el centro de la flor
                 ctx.beginPath();
                 ctx.arc(x, y, size / 4, 0, 2 * Math.PI);
                 ctx.fillStyle = '#FFD700'; // Color del centro
@@ -38,4 +86,3 @@
     </script>
 </body>
 </html>
-
