@@ -15,6 +15,7 @@ body {
     padding: 50px;
     border-radius: 15px;
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    position: relative; /* Agregado para colocar la flor dentro del contenedor */
 }
 
 h1 {
@@ -30,82 +31,42 @@ h1 {
 
 /* Estilo para la flor */
 .flower {
-    position: relative;
-    width: 100px;
-    height: 100px;
-    margin-top: 20px;
+    position: absolute;
+    right: -120px; /* Posicionar la flor a la derecha del contenedor */
+    top: 50%;
+    transform: translateY(-50%);
+    width: 150px;
+    height: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-.flower::before,
-.flower::after {
-    content: '';
+.petal {
     position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 100px;
-    height: 100px;
+    width: 80px;
+    height: 80px;
     background: #ff69b4;
     border-radius: 50%;
     transform-origin: center;
-}
-
-.flower::before {
-    transform: translate(-50%, -50%) rotate(45deg);
-}
-
-.flower::after {
-    transform: translate(-50%, -50%) rotate(-45deg);
-}
-
-.flower::after,
-.flower::before {
     animation: rotateFlower 10s linear infinite;
 }
 
-@keyframes rotateFlower {
-    0% { transform: translate(-50%, -50%) rotate(0deg); }
-    100% { transform: translate(-50%, -50%) rotate(360deg); }
-}
+.petal:nth-child(1) { transform: rotate(0deg); }
+.petal:nth-child(2) { transform: rotate(72deg); }
+.petal:nth-child(3) { transform: rotate(144deg); }
+.petal:nth-child(4) { transform: rotate(216deg); }
+.petal:nth-child(5) { transform: rotate(288deg); }
 
-.flower::after {
-    background: radial-gradient(circle, #ff69b4 50%, transparent 50%);
-}
-
-.flower::before {
-    background: radial-gradient(circle, transparent 50%, #ff69b4 50%);
-}
-
-.flower::before, .flower::after {
-    border-radius: 50%;
-}
-
-.flower::after, .flower::before {
-    background: #ff69b4;
+.center {
     width: 50px;
     height: 50px;
-}
-
-.flower::after {
-    background: #ff69b4;
-    transform: rotate(45deg);
-}
-
-.flower::before {
-    background: radial-gradient(circle, transparent 50%, #ff69b4 50%);
-}
-
-.flower::before {
-    transform: rotate(-45deg);
-}
-
-.flower::after, .flower::before {
-    background: #ff69b4;
-}
-
-.flower {
     background: #ffd700;
-    width: 30px;
-    height: 30px;
     border-radius: 50%;
-    margin-top: -15px;
+}
+
+/* Animación para girar la flor */
+@keyframes rotateFlower {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
 }
