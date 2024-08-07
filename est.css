@@ -3,6 +3,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
     height: 100vh;
     margin: 0;
     font-family: 'Arial', sans-serif;
@@ -25,4 +26,86 @@ h1 {
 .message {
     color: #333;
     font-size: 1.5em;
+}
+
+/* Estilo para la flor */
+.flower {
+    position: relative;
+    width: 100px;
+    height: 100px;
+    margin-top: 20px;
+}
+
+.flower::before,
+.flower::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100px;
+    height: 100px;
+    background: #ff69b4;
+    border-radius: 50%;
+    transform-origin: center;
+}
+
+.flower::before {
+    transform: translate(-50%, -50%) rotate(45deg);
+}
+
+.flower::after {
+    transform: translate(-50%, -50%) rotate(-45deg);
+}
+
+.flower::after,
+.flower::before {
+    animation: rotateFlower 10s linear infinite;
+}
+
+@keyframes rotateFlower {
+    0% { transform: translate(-50%, -50%) rotate(0deg); }
+    100% { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+.flower::after {
+    background: radial-gradient(circle, #ff69b4 50%, transparent 50%);
+}
+
+.flower::before {
+    background: radial-gradient(circle, transparent 50%, #ff69b4 50%);
+}
+
+.flower::before, .flower::after {
+    border-radius: 50%;
+}
+
+.flower::after, .flower::before {
+    background: #ff69b4;
+    width: 50px;
+    height: 50px;
+}
+
+.flower::after {
+    background: #ff69b4;
+    transform: rotate(45deg);
+}
+
+.flower::before {
+    background: radial-gradient(circle, transparent 50%, #ff69b4 50%);
+}
+
+.flower::before {
+    transform: rotate(-45deg);
+}
+
+.flower::after, .flower::before {
+    background: #ff69b4;
+}
+
+.flower {
+    background: #ffd700;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    margin-top: -15px;
 }
